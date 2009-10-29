@@ -9,7 +9,6 @@ let g:buftabs_only_basename=1
 
 
 set printoptions=header:0,left:10pt
-set printfont=MS Gothic:h8:cSHIFTJIS
 
 
 syntax on
