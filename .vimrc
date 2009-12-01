@@ -89,7 +89,7 @@ endif
 hi Pmenu ctermbg=4
 hi PmenuSel ctermbg=1
 hi PmenuSbar ctermbg=0
-set completeopt=menuone,longest,preview
+set completeopt=menuone,longest
 
 
 highlight SpecialKey guibg=#222222 cterm=underline ctermfg=darkgrey
