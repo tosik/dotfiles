@@ -79,6 +79,10 @@ cnoremap <C-p> <up>
 cnoremap <C-n> <down>
 
 
+" enable NeoComplCache
+let g:AutoComplPop_NotEnableAtStartup = 1
+let g:NeoComplCache_EnableAtStartup = 1
+
 
 if winwidth(0) >= 120
   set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %F%=[%{GetB()}]\ %l,%c%V%8P
@@ -89,7 +93,7 @@ endif
 hi Pmenu ctermbg=4
 hi PmenuSel ctermbg=1
 hi PmenuSbar ctermbg=0
-set completeopt=menuone,longest
+set completeopt=menuone
 
 
 highlight SpecialKey guibg=#222222 cterm=underline ctermfg=darkgrey
