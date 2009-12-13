@@ -6,7 +6,11 @@ unsetopt AUTO_MENU
 
 # language
 # export LANG=ja_JP.UTF-8
-export LANG=en_EN.UTF-8
+#export LANG=en_EN.UTF-8
+export LANG=C
+
+# svn
+export SVN_EDITOR='vim'
 
 # history
 HISTFILE=~/.zsh_history
