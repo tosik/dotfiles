@@ -12,6 +12,10 @@ export LANG=C
 # svn
 export SVN_EDITOR='vim'
 
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+rvm use 1.9.2-p0
+
 # history
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
