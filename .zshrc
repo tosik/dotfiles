@@ -54,7 +54,7 @@ alias du="du -h"
 
 # screen
 if [ $SHLVL = 1 ]; then
-        screen -R
+        screen -U -R
         exit
 fi
 
