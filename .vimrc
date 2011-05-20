@@ -4,6 +4,7 @@ filetype plugin on
 au FileType ruby set ts=2 sw=2 expandtab
 au FileType c set ts=4 sw=4 sts=0
 au FileType cpp set ts=4 sw=4 sts=0
+au FileType php set ts=4 sw=4 sts=0
 
 let g:buftabs_only_basename=1
 
@@ -14,8 +15,8 @@ set printoptions=header:0,left:10pt
 syntax on
 
 
-set t_Co=256
-colorscheme desert256
+
+colorscheme desert
 
 
 
@@ -36,6 +37,8 @@ set incsearch
 set nohlsearch
 set nobackup
 set backspace=2
+
+set shell=/bin/sh
 
 " binary mode -> vim -b  or  vim *.bin 
 augroup BinaryXXD

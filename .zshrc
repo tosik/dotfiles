@@ -4,6 +4,12 @@ compinit -u
 setopt auto_pushd
 unsetopt AUTO_MENU
 
+# path
+export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
+export PATH=~/pear/bin:$PATH
+export PATH=~/local/node/bin:$PATH
+export PATH=/usr/games:$PATH
+
 # language
 export LANG=ja_JP.UTF-8
 #export LANG=en_EN.UTF-8
@@ -11,6 +17,8 @@ export LANG=ja_JP.UTF-8
 
 # svn
 export SVN_EDITOR='vim'
+
+export FLEX_HOME=/Applications/FDT/plugins/com.powerflasher.fdt.shippedFlexSDK4_4.0.0.14159_1000/flex
 
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
@@ -48,13 +56,17 @@ autoload -U colors
 colors
 
 # alias
-alias ll="ls -l --color"
-alias la="ls -la --color"
+alias ll="ls -lG"
+alias la="ls -laG"
 alias du="du -h"
 
+
 # screen
+function chpwd() {
+  echo -ne "\ek$(basename $(pwd))\e\\"
+}
 if [ $SHLVL = 1 ]; then
-        screen -U -R
+        screen -U -R -d
         exit
 fi
 
