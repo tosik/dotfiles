@@ -62,8 +62,11 @@ alias du="du -h"
 
 
 # screen
+function title {
+  screen -X eval "title '$1'"
+}
 function chpwd() {
-  echo -ne "\ek$(basename $(pwd))\e\\"
+  title $(basename $(pwd))
 }
 if [ $SHLVL = 1 ]; then
         screen -U -R -d
