@@ -1,0 +1,21 @@
+[user]
+	name = Toshiyuki Hirooka
+	email = toshi.hirooka@gmail.com
+[github]
+	user = tosik
+[alias]
+	co = checkout
+	br = branch
+	st = status
+	df = diff
+	topic = "!sh -c 'git co -b $1 master' __dummy__"
+	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
+	push-for-review = "!sh -c 'git push origin HEAD:refs/for/master/`git current-branch`'"
+	dfx = !git diff | gitx
+	tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[core]
+	excludesfile = /Users/tosik/.gitignore
+[color]
+	diff = auto
+	branch = auto
+	status = auto
