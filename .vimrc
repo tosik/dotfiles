@@ -1,3 +1,19 @@
+" vundles
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'vim-scripts/desert256.vim'
+
+Bundle 'kchmck/vim-coffee-script'
+
+Bundle 'JavaScript-syntax'
+Bundle 'itspriddle/vim-javascript-indent'
+
+
 filetype on
 filetype indent on
 filetype plugin on
@@ -5,6 +21,7 @@ au FileType ruby set ts=2 sw=2 expandtab
 au FileType c set ts=4 sw=4 sts=0
 au FileType cpp set ts=4 sw=4 sts=0
 au FileType php set ts=4 sw=4 sts=0
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 let g:buftabs_only_basename=1
 
