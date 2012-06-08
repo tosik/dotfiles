@@ -61,6 +61,9 @@ alias la="ls -laG"
 alias du="du -h"
 alias g="git"
 
+alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias vim='vi'
+alias mvim='/Applications/MacVim.app/Contents/MacOS/mvim'
 
 # screen
 function title {

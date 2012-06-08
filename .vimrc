@@ -13,6 +13,12 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'JavaScript-syntax'
 Bundle 'itspriddle/vim-javascript-indent'
 
+Bundle 'motemen/git-vim.git'
+Bundle 'Shougo/unite.vim'
+Bundle 'https://github.com/Sixeight/unite-grep.git'
+Bundle 'https://github.com/Shougo/vimproc.git'
+Bundle 'Shougo/neocomplcache'
+
 
 filetype on
 filetype indent on
@@ -22,6 +28,9 @@ au FileType c set ts=4 sw=4 sts=0
 au FileType cpp set ts=4 sw=4 sts=0
 au FileType php set ts=4 sw=4 sts=0
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+helptags $HOME/.vim/doc
+set helplang=ja,en
 
 let g:buftabs_only_basename=1
 
@@ -54,6 +63,8 @@ set incsearch
 set nohlsearch
 set nobackup
 set backspace=2
+set cursorline
+"set cursorcolumn
 
 set shell=/bin/sh
 
@@ -88,8 +99,8 @@ nnoremap ,7   :e #7<CR>
 nnoremap ,8   :e #8<CR>
 nnoremap ,9   :e #9<CR>
 
-noremap <Space> :bnext<CR>
-noremap <S-Space> :bprev<CR>
+"noremap <Space> :bnext<CR>
+"noremap <S-Space> :bprev<CR>
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
 nmap <C-j> <C-w>j
@@ -100,8 +111,37 @@ cnoremap <C-n> <down>
 
 
 " enable NeoComplCache
-let g:AutoComplPop_NotEnableAtStartup = 1
-let g:NeoComplCache_EnableAtStartup = 1
+"let g:AutoComplPop_NotEnableAtStartup = 1
+"let g:NeoComplCache_EnableAtStartup = 1
+
+" unite
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" カレントディレクトリ一覧
+nnoremap <silent> ,uu :<C-u>UniteWithCurrentDir file<CR>
+" バッファのディレクトリ一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+"nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" 全部乗せ
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> ,ug :Unite grep:**/*:-iHRn<CR>
+" 再帰的ファイル一覧
+nnoremap <silent> ,ur :<C-u>Unite file_rec/async<CR>
+
+nnoremap <silent> <C-e> :<C-u>Unite file_rec/async<CR>
+
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite nnoremap <silent> <buffer> <expr> <C-k> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-h> unite#do_action('vsplit')
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+
+
+
 
 
 if winwidth(0) >= 120
