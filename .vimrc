@@ -131,7 +131,7 @@ nnoremap <silent> ,ug :Unite grep:**/*:-iHRn<CR>
 " 再帰的ファイル一覧
 nnoremap <silent> ,ur :<C-u>Unite file_rec/async<CR>
 
-nnoremap <silent> <C-e> :<C-u>Unite file_rec/async<CR>
+nnoremap <silent> <C-e> :<C-u>Unite file_rec/async -start-insert<CR>
 
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
