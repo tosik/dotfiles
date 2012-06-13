@@ -162,7 +162,7 @@ endfunction
 function! JasmineLine()
   execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec jasmine-headless-webkit %"'
 endfunction
-function! RSpecAll()
+function! JasmineAll()
   execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec jasmine-headless-webkit"'
 endfunction
 " git blame
