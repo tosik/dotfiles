@@ -106,11 +106,11 @@ let g:neocomplcache_enable_at_startup = 1
 " unite
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uu :<C-u>UniteWithCurrentDir file<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
+nnoremap <silent> ,um :<C-u>Unite file_mru -start-insert<CR>
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> ,ug :Unite grep<CR>
-nnoremap <silent> ,ur :<C-u>Unite file_rec/async<CR>
+nnoremap <silent> ,ur :<C-u>UniteResume<CR>
 nnoremap <silent> <C-e> :<C-u>Unite file_rec/async -start-insert<CR>
 vnoremap <silent> ,g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
 au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
@@ -149,14 +149,21 @@ set listchars=tab:\ \ ,extends:<,trail:\
 " rspecs
 nmap ,r :call RSpecLine() <CR>
 nmap ,R :call RSpecAll() <CR>
+nmap ,j :call JasmineLine() <CR>
+nmap ,J :call JasmineAll() <CR>
 
 " vim-rspec
 function! RSpecLine()
   execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec rspec -O ~/.rspec --backtrace -X % -l '.line('.').'"'
 endfunction
-
 function! RSpecAll()
   execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec rspec -O ~/.rspec --backtrace -X %"'
+endfunction
+function! JasmineLine()
+  execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec jasmine-headless-webkit %"'
+endfunction
+function! RSpecAll()
+  execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec jasmine-headless-webkit"'
 endfunction
 " git blame
 function! GitBlame()
