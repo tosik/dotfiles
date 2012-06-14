@@ -10,7 +10,7 @@
 	df = diff
 	fe = fetch
 	pr = 'pull --rebase'
-	topic = "!sh -c 'git co -b $1 master' __dummy__"
+	topic = "!sh -c 'git fetch; git co -b $1 FETCH_HEAD' __dummy__"
 	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
 	push-for-review = "!sh -c 'git push origin HEAD:refs/for/master/`git current-branch`'"
 	pfr = "!sh -c 'git push-for-review'"

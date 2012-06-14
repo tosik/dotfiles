@@ -109,10 +109,10 @@ nnoremap <silent> ,uu :<C-u>UniteWithCurrentDir file<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
 nnoremap <silent> ,um :<C-u>Unite file_mru -start-insert<CR>
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> ,ug :Unite grep<CR>
+nnoremap ,ug :Unite grep::-iHRn<CR>/**/*
 nnoremap <silent> ,ur :<C-u>UniteResume<CR>
 nnoremap <silent> <C-e> :<C-u>Unite file_rec/async -start-insert<CR>
-vnoremap <silent> ,g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
+vnoremap ,g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>/**/*
 au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite nnoremap <silent> <buffer> <expr> <C-k> unite#do_action('split')
