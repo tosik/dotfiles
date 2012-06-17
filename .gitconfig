@@ -3,6 +3,7 @@
 	email = toshi.hirooka@gmail.com
 [github]
 	user = toshi.hirooka@gmail.com
+  password = !security 2>&1 >/dev/null find-generic-password -gs github.password | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/'
 [alias]
 	co = checkout
 	br = branch
@@ -10,7 +11,7 @@
 	df = diff
 	fe = fetch
 	pr = 'pull --rebase'
-	topic = "!sh -c 'git fetch; git co -b $1 FETCH_HEAD' __dummy__"
+	topic = "!sh -c 'git co -b $1 master' __dummy__"
 	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
 	push-for-review = "!sh -c 'git push origin HEAD:refs/for/master/`git current-branch`'"
 	pfr = "!sh -c 'git push-for-review'"
