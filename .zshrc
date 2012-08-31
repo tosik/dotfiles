@@ -9,7 +9,7 @@ export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
 export PATH=~/pear/bin:$PATH
 export PATH=~/local/node/bin:$PATH
 export PATH=/usr/games:$PATH
-export PATH=/Users/tosik/bin:$PATH
+export PATH=~/bin:$PATH
 
 # language
 export LANG=ja_JP.UTF-8
@@ -81,3 +81,5 @@ function chpwd() {
 #        exit
 #fi
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
