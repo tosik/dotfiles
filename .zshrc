@@ -9,6 +9,7 @@ export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
 export PATH=~/pear/bin:$PATH
 export PATH=~/local/node/bin:$PATH
 export PATH=/usr/games:$PATH
+export PATH=/Users/tosik/bin:$PATH
 
 # language
 export LANG=ja_JP.UTF-8
@@ -65,15 +66,18 @@ alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='vi'
 alias mvim='/Applications/MacVim.app/Contents/MacOS/mvim'
 
+alias gn='growlnotify'
+alias tgn='tail -n3|growlnotify'
+
 # screen
 function title {
   screen -X eval "title '$1'"
 }
 function chpwd() {
-  title $(basename $(pwd))
+#  title $(basename $(pwd))
 }
-if [ $SHLVL = 1 ]; then
-        screen -U -R -d
-        exit
-fi
+#if [ $SHLVL = 1 ]; then
+#        screen -U -R -d
+#        exit
+#fi
 

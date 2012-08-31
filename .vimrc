@@ -100,7 +100,7 @@ nmap < :vertical resize +1<CR>
 nmap > :vertical resize -1<CR>
 
 " enable NeoComplCache
-let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_at_startup = 1
 
 
 " unite
@@ -118,6 +118,9 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split
 au FileType unite nnoremap <silent> <buffer> <expr> <C-k> unite#do_action('split')
 au FileType unite nnoremap <silent> <buffer> <expr> <C-h> unite#do_action('vsplit')
 au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+
+" unite finder spec
+vnoremap ,s y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>/**/*_spec.rb
 
 
 " ruby rails
@@ -149,6 +152,7 @@ set listchars=tab:\ \ ,extends:<,trail:\
 " rspecs
 nmap ,r :call RSpecLine() <CR>
 nmap ,R :call RSpecAll() <CR>
+nmap ,S :call RSpecAllWithoutX() <CR>
 nmap ,j :call JasmineLine() <CR>
 nmap ,J :call JasmineAll() <CR>
 
@@ -159,15 +163,14 @@ endfunction
 function! RSpecAll()
   execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec rspec -O ~/.rspec --backtrace -X %"'
 endfunction
+function! RSpecAllWithoutX()
+  execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec rspec -O ~/.rspec --backtrace %"'
+endfunction
 function! JasmineLine()
   execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec jasmine-headless-webkit %"'
 endfunction
 function! JasmineAll()
   execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec jasmine-headless-webkit"'
-endfunction
-" git blame
-function! GitBlame()
-  execute '! zsh -c "git blame %"'
 endfunction
 
 

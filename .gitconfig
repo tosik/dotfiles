@@ -9,15 +9,18 @@
 	br = branch
 	st = status
 	df = diff
+	dfc = diff --cached
 	fe = fetch
 	pr = 'pull --rebase'
+	rbc = rebase --continue
+	rba = rebase --abort
 	topic = "!sh -c 'git co -b $1 master' __dummy__"
 	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
-	push-for-review = "!sh -c 'git push origin HEAD:refs/for/master/`git current-branch`'"
+	push-for-review = "!sh -c 'git push origin HEAD:refs/for/`git current-branch`'"
 	pfr = "!sh -c 'git push-for-review'"
 	dfx = !git diff | gitx
 	tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	pr = pull --rebase origin master
+	pr = pull --rebase
 [core]
 	excludesfile = /Users/tosik/.gitignore
 	autocrlf = input
