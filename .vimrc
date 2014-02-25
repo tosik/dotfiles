@@ -1,28 +1,6 @@
 " vundles
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-
-Bundle 'vim-scripts/desert256.vim'
-Bundle 'railscasts'
-
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'Textile-for-VIM'
-Bundle 'JavaScript-syntax'
-Bundle 'itspriddle/vim-javascript-indent'
-"Bundle 'rails.vim'
-Bundle 'vim-ruby/vim-ruby'
-
-Bundle 'motemen/git-vim.git'
-Bundle 'Shougo/unite.vim'
-Bundle 'https://github.com/Sixeight/unite-grep.git'
-Bundle 'https://github.com/Shougo/vimproc.git'
-Bundle 'Shougo/neocomplcache'
-Bundle 'The-NERD-Commenter'
-
 
 " filetypes
 filetype on
@@ -36,7 +14,6 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 
 " help
-helptags $HOME/.vim/doc
 set helplang=ja,en
 
 
@@ -123,18 +100,6 @@ au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vspli
 vnoremap ,s y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>/**/*_spec.rb
 
 
-" ruby rails
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
-
-
-" nerd commenter
-let NERDSpaceDelims = 1
-nmap <Leader>c <Plug>NERDCommenterToggle
-vmap <Leader>c <Plug>NERDCommenterToggle
-
-
 " statusline
 if winwidth(0) >= 120
   set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %F%=\ %l,%c%V%8P
@@ -147,30 +112,3 @@ endif
 highlight SpecialKey guibg=#222222 cterm=underline ctermfg=darkgrey
 set list
 set listchars=tab:\ \ ,extends:<,trail:\ 
-
-
-" rspecs
-nmap ,r :call RSpecLine() <CR>
-nmap ,R :call RSpecAll() <CR>
-nmap ,S :call RSpecAllWithoutX() <CR>
-nmap ,j :call JasmineLine() <CR>
-nmap ,J :call JasmineAll() <CR>
-
-" vim-rspec
-function! RSpecLine()
-  execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec rspec -O ~/.rspec --backtrace -X % -l '.line('.').'"'
-endfunction
-function! RSpecAll()
-  execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec rspec -O ~/.rspec --backtrace -X %"'
-endfunction
-function! RSpecAllWithoutX()
-  execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec rspec -O ~/.rspec --backtrace %"'
-endfunction
-function! JasmineLine()
-  execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec jasmine-headless-webkit %"'
-endfunction
-function! JasmineAll()
-  execute '! zsh -c ". $rvm_path/scripts/rvm; bundle exec jasmine-headless-webkit"'
-endfunction
-
-

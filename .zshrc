@@ -5,11 +5,14 @@ setopt auto_pushd
 unsetopt AUTO_MENU
 
 # path
+export PATH=~/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
 export PATH=~/pear/bin:$PATH
 export PATH=~/local/node/bin:$PATH
 export PATH=/usr/games:$PATH
-export PATH=~/bin:$PATH
+export PATH=~/.cabal/bin:$PATH
+export PATH=~/.airenv/sdks/current/bin:$PATH
+export PATH=~/.airenv/sdks/current/lib/android/bin:$PATH
 
 # language
 export LANG=ja_JP.UTF-8
@@ -21,9 +24,17 @@ export SVN_EDITOR='vim'
 
 export FLEX_HOME=/Applications/FDT/plugins/com.powerflasher.fdt.shippedFlexSDK4_4.0.0.14159_1000/flex
 
+# git
+autoload bashcompinit
+bashcompinit
+source ~/git-completion.bash
+
 # rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-rvm use 1.9.2
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+#rvm use 1.9.3
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # history
 HISTFILE=~/.zsh_history
@@ -69,9 +80,13 @@ alias mvim='/Applications/MacVim.app/Contents/MacOS/mvim'
 alias gn='growlnotify'
 alias tgn='tail -n3|growlnotify'
 
+alias svn16='/Applications/Xcode.app/Contents/Developer/usr/subversion-1.6/bin/svn'
+alias vim='/usr/bin/vim'
+
 # screen
 function title {
-  screen -X eval "title '$1'"
+  #screen -X eval "title '$1'"
+  tmux rename-window $1
 }
 function chpwd() {
 #  title $(basename $(pwd))
@@ -83,3 +98,6 @@ function chpwd() {
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:/usr/local/share/npm/bin/
+
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
