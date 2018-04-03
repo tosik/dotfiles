@@ -61,8 +61,7 @@ bindkey "^R" history-incremental-search-backward
 setopt list_packed
 setopt nolistbeep
 # RPROMPT=''
-PROMPT="%/%% "
-PROMPT2="%_%% "
+PROMPT=$'%(?.\U1F439.\U274C)  '
 SPROMPT="%r is correct? [n,y,a,e]: "
 autoload -U colors
 colors
