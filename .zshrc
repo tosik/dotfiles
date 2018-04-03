@@ -27,7 +27,7 @@ export FLEX_HOME=/Applications/FDT/plugins/com.powerflasher.fdt.shippedFlexSDK4_
 # git
 autoload bashcompinit
 bashcompinit
-source ~/git-completion.bash
+#source ~/git-completion.bash
 
 # rvm
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
