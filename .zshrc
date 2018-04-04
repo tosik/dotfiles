@@ -54,3 +54,6 @@ alias g="git"
 
 alias vim='/usr/bin/vim'
 
+# time
+REPORTTIME=3
+
