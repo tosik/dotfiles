@@ -17,14 +17,20 @@ set tabstop=4
 set shiftwidth=4
 set noswapfile
 
+set encoding=utf-8
+
 " press <C-]> to open tag in new tab
-nnoremap <silent><C-]> <C-w><C-]><C-w>T
+"nnoremap <silent><C-]> <C-w><C-]><C-w>T
 
 " Mouse
 set mouse=a
 
 " Line number
 set number
+
+" Search
+set ignorecase
+set smartcase
 
 " NERDTree
 autocmd VimEnter * execute 'NERDTree'
@@ -36,4 +42,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " CtrlP
 let g:ctrlp_max_files = 100000
-let g:ctrlp_custom_ignore = '*.\.o\|\.git'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|meta|prefab)$',
+  \ }
+
