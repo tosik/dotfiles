@@ -57,3 +57,10 @@ alias vim='/usr/bin/vim'
 # time
 REPORTTIME=3
 
+# devkitpro
+export DEVKITPRO=/opt/devkitpro
+export DEVKITARM=$DEVKITPRO/devkitARM
+
+# path
+export PATH="$HOME/bin:$PATH"
+export PATH="/opt/devkitpro/devkitARM/bin:$PATH"
