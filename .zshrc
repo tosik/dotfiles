@@ -52,8 +52,6 @@ alias la="ls -laG"
 alias du="du -h"
 alias g="git"
 
-alias vim='/usr/bin/vim'
-
 # time
 REPORTTIME=3
 
@@ -64,3 +62,4 @@ export DEVKITARM=$DEVKITPRO/devkitARM
 # path
 export PATH="$HOME/bin:$PATH"
 export PATH="/opt/devkitpro/devkitARM/bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:$PATH"
