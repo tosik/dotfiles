@@ -48,7 +48,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " CtrlP
 let g:ctrlp_max_files = 100000
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,obj/*,*.o,bin/*
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|meta|prefab)$',
