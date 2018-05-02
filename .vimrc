@@ -35,6 +35,9 @@ set number
 set ignorecase
 set smartcase
 
+" auto-reload
+set autoread
+
 " NERDTree
 autocmd VimEnter * execute 'NERDTree'
 let g:NERDTreeShowBookmarks=1
