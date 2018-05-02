@@ -21,6 +21,9 @@ bashcompinit
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+# less
+export LESSCHARSET=utf-8
+
 # history
 HISTFILE=~/.zsh_history
 HISTSIZE=100000

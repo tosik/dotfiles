@@ -29,6 +29,8 @@
 	excludesfile = /Users/tosik/.gitignore
 	autocrlf = input
 	editor = vim -u NONE -N
+    pager = less -cm
+    quotepath = false
 [color]
 	diff = auto
 	branch = auto
