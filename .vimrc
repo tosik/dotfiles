@@ -54,3 +54,25 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|meta|prefab)$',
   \ }
 
+
+"----------------------------------------------------
+" Insert include guard to the current file
+"----------------------------------------------------
+command!  -nargs=0 IncGuard call IncludeGuard()
+function! IncludeGuard()
+    "カレントファイル名を取得
+    let name = fnamemodify(expand('%'),':t')
+
+    "大文字にする
+    let name = toupper(name)
+
+    "がーど
+    let included = substitute(name,'\.','_','g').'_'
+
+    "書き込み
+    let res_head = '#ifndef _'.included."\n#define _".included."\n\n"
+    let res_foot = "\n\n".'#endif'
+    silent! execute '1s/^/\=res_head'
+    silent! execute '$s/$/\=res_foot'
+endfunction
+
