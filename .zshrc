@@ -18,8 +18,10 @@ export SVN_EDITOR='vim'
 autoload bashcompinit
 bashcompinit
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if type rbenv >/dev/null 2>&1; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
 
 # less
 export LESSCHARSET=utf-8
@@ -46,8 +48,12 @@ bindkey "^N" history-beginning-search-forward-end
 bindkey "^R" history-incremental-search-backward
 
 # prompt
-PROMPT=$'%(?.\U1F439.\U274C)  '
-SPROMPT="%r is correct? [n,y,a,e]: "
+if [ "$TMUX" ]; then
+    export TMUX_WINDOW=$(tmux display -p '#I-#P')
+else
+    PROMPT=$'%(?.\U1F439.\U274C)  '
+    SPROMPT="%r is correct? [n,y,a,e]: "
+fi
 
 # alias
 alias ll="ls -lG"
