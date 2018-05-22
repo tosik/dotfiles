@@ -1,0 +1,4 @@
+--languages=C++
+--recurse=yes
+--C++-kinds=-n
+
