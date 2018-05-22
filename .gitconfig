@@ -28,7 +28,7 @@
 [core]
 	excludesfile = /Users/tosik/.gitignore
 	autocrlf = input
-	editor = vim -u NONE -N
+    editor = vim
     pager = less -cm
     quotepath = false
 [color]

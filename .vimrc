@@ -76,3 +76,10 @@ function! IncludeGuard()
     silent! execute '$s/$/\=res_foot'
 endfunction
 
+" Header and source switcher
+nnoremap ,c :e %<.cpp<CR>
+nnoremap ,h :e %<.h<CR>
+
+" generate tags
+nnoremap ,g :!ctags<CR>
+

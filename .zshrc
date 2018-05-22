@@ -72,3 +72,7 @@ export DEVKITARM=$DEVKITPRO/devkitARM
 export PATH="$HOME/bin:$PATH"
 export PATH="$DEVKITARM/bin:$PATH"
 export PATH="/usr/local/bin:/usr/bin:$PATH"
+
+# direnv
+eval "$(direnv hook zsh)"
+
