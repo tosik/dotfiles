@@ -10,6 +10,7 @@ call dein#add('scrooloose/nerdtree')
 call dein#add('jistr/vim-nerdtree-tabs')
 call dein#add('bronson/vim-trailing-whitespace')
 call dein#add('ctrlpvim/ctrlp.vim')
+call dein#add('rking/ag.vim')
 
 call dein#end()
 
