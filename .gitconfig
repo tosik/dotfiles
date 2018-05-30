@@ -40,7 +40,7 @@
 [rebase]
 	autosquash = true
 [push]
-	default = simple
+	default = current
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
