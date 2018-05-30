@@ -50,8 +50,11 @@ bindkey "^R" history-incremental-search-backward
 # prompt
 if [ "$TMUX" ]; then
     export TMUX_WINDOW=$(tmux display -p '#I-#P')
-else
+elif [ "$(uname)" = 'Darwin' ]; then
     PROMPT=$'%(?.\U1F439.\U274C)  '
+    SPROMPT="%r is correct? [n,y,a,e]: "
+else
+    PROMPT=$'%(?.\U1F35A.\U274C)  '
     SPROMPT="%r is correct? [n,y,a,e]: "
 fi
 
