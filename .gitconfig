@@ -26,7 +26,7 @@
   current-svn-rev = ! git svn find-rev `git current-sha1`
   counterpart-branch = ! ( git ls-remote | grep `git current-sha1` | grep heads | cut -d/ -f3 ) 2> /dev/null
 [core]
-	excludesfile = /Users/tosik/.gitignore
+	excludesfile = ~/.gitignore
 	autocrlf = input
     editor = vim
     pager = less -cm
