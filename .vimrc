@@ -11,6 +11,8 @@ call dein#add('jistr/vim-nerdtree-tabs')
 call dein#add('bronson/vim-trailing-whitespace')
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('rking/ag.vim')
+call dein#add('rhysd/vim-clang-format')
+call dein#add('kana/vim-operator-user')
 
 call dein#end()
 
@@ -38,6 +40,9 @@ set smartcase
 
 " auto-reload
 set autoread
+
+" command compl
+set wildmenu wildmode=list:longest,full
 
 " NERDTree
 autocmd VimEnter * execute 'NERDTree'
@@ -83,4 +88,3 @@ nnoremap ,h :e %<.h<CR>
 
 " generate tags
 nnoremap ,g :!ctags<CR>
-
