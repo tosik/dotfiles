@@ -45,11 +45,9 @@ set autoread
 set wildmenu wildmode=list:longest,full
 
 " NERDTree
-autocmd VimEnter * execute 'NERDTree'
+"autocmd VimEnter * execute 'NERDTree'
 let g:NERDTreeShowBookmarks=1
 let NERDTreeShowHidden = 1
-nnoremap <silent><C-e> :NERDTreeFocusToggle<CR>
-let g:nerdtree_tabs_open_on_console_startup=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " CtrlP
