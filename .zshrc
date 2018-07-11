@@ -68,8 +68,9 @@ alias g="git"
 REPORTTIME=3
 
 # devkitpro
-export DEVKITPRO=~/devkitPro
-export DEVKITARM=$DEVKITPRO/devkitARM
+export DEVKITPRO=/opt/devkitpro
+export DEVKITARM=/opt/devkitpro/devkitARM
+export DEVKITPPC=/opt/devkitpro/devkitPPC
 
 # path
 export PATH="$HOME/bin:$PATH"
