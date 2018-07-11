@@ -58,6 +58,14 @@ else
     SPROMPT="%r is correct? [n,y,a,e]: "
 fi
 
+# precmd
+function precmd() {
+    # refresh tmux
+    if [ ! -z $TMUX ]; then
+        tmux refresh-client -S
+    fi
+}
+
 # alias
 alias ll="ls -lG"
 alias la="ls -laG"
