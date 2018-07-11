@@ -49,12 +49,12 @@ bindkey "^R" history-incremental-search-backward
 
 # prompt
 if [ "$TMUX" ]; then
-    PROMPT=$'%(?.\U1F439.\U274C)  '
+    PROMPT=$'%(?.[✔].[✘]) '
 elif [ "$(uname)" = 'Darwin' ]; then
-    PROMPT=$'%(?.\U1F439.\U274C)  '
+    PROMPT=$'%(?.\U1F439.\U274C) '
     SPROMPT="%r is correct? [n,y,a,e]: "
 else
-    PROMPT=$'%(?.\U1F35A.\U274C)  '
+    PROMPT=$'%(?.\U1F35A.\U274C) '
     SPROMPT="%r is correct? [n,y,a,e]: "
 fi
 
