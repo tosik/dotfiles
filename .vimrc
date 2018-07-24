@@ -25,8 +25,7 @@ syntax on
 
 set encoding=utf-8
 
-" press <C-]> to open tag in new tab
-"nnoremap <silent><C-]> <C-w><C-]><C-w>T
+nnoremap ,x :ClangFormat<CR>
 
 " Mouse
 set mouse=a
