@@ -13,6 +13,7 @@ call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('rking/ag.vim')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
+call dein#add('justmao945/vim-clang')
 
 call dein#end()
 
