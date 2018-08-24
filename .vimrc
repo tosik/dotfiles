@@ -13,6 +13,7 @@ call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('rking/ag.vim')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
+call dein#add('justmao945/vim-clang')
 
 call dein#end()
 
@@ -26,6 +27,10 @@ syntax on
 set encoding=utf-8
 
 nnoremap ,x :ClangFormat<CR>
+
+let g:clang_cpp_options = '-std=c++14 -stdlib=libc++'
+let g:clang_format_auto = 1
+let g:clang_check_syntax_auto = 1
 
 " Mouse
 set mouse=a
@@ -51,7 +56,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " CtrlP
 let g:ctrlp_max_files = 100000
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,obj/*,*.o,bin/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,obj/*,*.dep,*.o,bin/*
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|meta|prefab)$',
