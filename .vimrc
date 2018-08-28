@@ -68,17 +68,15 @@ let g:ctrlp_custom_ignore = {
 "----------------------------------------------------
 command!  -nargs=0 IncGuard call IncludeGuard()
 function! IncludeGuard()
-    "カレントファイル名を取得
-    let name = fnamemodify(expand('%'),':t')
+    let prefix  = '_INCLUDE_GUARD_UUID_'
+    let uuid = substitute(system('uuidgen'),'\n','','g')
+    let name = prefix.substitute(uuid,'-','_','g').'_'
 
     "大文字にする
-    let name = toupper(name)
-
-    "がーど
-    let included = substitute(name,'\.','_','g').'_'
+    let included = toupper(name)
 
     "書き込み
-    let res_head = '#ifndef _'.included."\n#define _".included."\n\n"
+    let res_head = '#ifndef '.included."\n#define ".included."\n\n"
     let res_foot = "\n\n".'#endif'
     silent! execute '1s/^/\=res_head'
     silent! execute '$s/$/\=res_foot'
