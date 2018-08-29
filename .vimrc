@@ -31,6 +31,8 @@ nnoremap ,x :ClangFormat<CR>
 let g:clang_cpp_options = '-std=c++14 -stdlib=libc++'
 let g:clang_format_auto = 1
 let g:clang_check_syntax_auto = 1
+let g:clang_verbose_pmenu = 1
+let g:clang_auto = 0
 
 " Mouse
 set mouse=a
@@ -88,3 +90,9 @@ nnoremap ,h :e %<.h<CR>
 
 " generate tags
 nnoremap ,g :!ctags<CR>
+
+" highlight
+" <cr> should not only clear highlighted search, but flash the current
+" cursor location.
+nnoremap <CR> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
+
