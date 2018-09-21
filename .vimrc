@@ -1,5 +1,5 @@
 if &compatible
-      set nocompatible
+    set nocompatible
 endif
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
@@ -13,7 +13,7 @@ call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('rking/ag.vim')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
-call dein#add('justmao945/vim-clang')
+call dein#add('tosik/vim-clang', {'rev': 'add-clang-complete-reload-func'})
 
 call dein#end()
 
@@ -25,8 +25,7 @@ set noswapfile
 syntax on
 
 set encoding=utf-8
-
-nnoremap ,x :ClangFormat<CR>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*/obj/*,*.dep,*.o,*/bin/*,*/build/*,*.ttf
 
 let g:clang_cpp_options = '-std=c++14 -stdlib=libc++'
 let g:clang_format_auto = 1
@@ -52,14 +51,11 @@ set autoread
 set wildmenu wildmode=list:longest,full
 
 " NERDTree
-"autocmd VimEnter * execute 'NERDTree'
-let g:NERDTreeShowBookmarks=1
+let g:NERDTreeShowBookmarks = 1
 let NERDTreeShowHidden = 1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " CtrlP
 let g:ctrlp_max_files = 100000
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*/obj/*,*.dep,*.o,*/bin/*,*/build/*,*.ttf
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|meta|prefab)$',
@@ -74,26 +70,26 @@ function! IncludeGuard()
     let prefix  = '_INCLUDE_GUARD_UUID_'
     let uuid = substitute(system('uuidgen'),'\n','','g')
     let name = prefix.substitute(uuid,'-','_','g').'_'
-
-    "大文字にする
     let included = toupper(name)
-
-    "書き込み
     let res_head = '#ifndef '.included."\n#define ".included."\n\n"
     let res_foot = "\n\n".'#endif'
     silent! execute '1s/^/\=res_head'
     silent! execute '$s/$/\=res_foot'
 endfunction
 
+
 " Header and source switcher
 nnoremap ,c :e %<.cpp<CR>
 nnoremap ,h :e %<.h<CR>
 
 " generate tags
-nnoremap ,g :!ctags<CR>
+nnoremap ,g :!ctags .<CR>
 
 " highlight
-" <cr> should not only clear highlighted search, but flash the current
-" cursor location.
 nnoremap <C-e> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
+
+" load .vimrc in current directory
+if filereadable(".vimrc")
+    source .vimrc
+endif
 
