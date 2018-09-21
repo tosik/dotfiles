@@ -18,6 +18,7 @@ call dein#add('rking/ag.vim')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
 call dein#add('tosik/vim-clang', {'rev': 'add-clang-complete-reload-func'})
+call dein#add('w0rp/ale')
 
 call dein#end()
 
@@ -33,7 +34,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*/obj/*,*.dep,*.o,*/bin/*,*
 
 let g:clang_cpp_options = '-std=c++14 -stdlib=libc++'
 let g:clang_format_auto = 1
-let g:clang_check_syntax_auto = 1
+let g:clang_check_syntax_auto = 0
 let g:clang_verbose_pmenu = 1
 let g:clang_auto = 0
 let g:clang_compilation_database = './build'
@@ -65,6 +66,13 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|meta|prefab)$',
   \ }
 
+" ALE
+let g:ale_c_parse_compile_commands = 1
+let g:ale_linters = {
+      \   'c' : ['clang'],
+      \   'cpp' : ['clang']
+      \}
+nnoremap ,o :ALEDetail<CR>
 
 "----------------------------------------------------
 " Insert include guard to the current file
@@ -91,6 +99,9 @@ nnoremap ,g :!ctags .<CR>
 
 " highlight
 nnoremap <C-e> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
+
+" check clang syntax
+nnoremap ,s :ClangSyntaxCheck<CR>:w<CR>
 
 " load .vimrc in current directory
 if filereadable(".vimrc")

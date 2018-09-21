@@ -79,6 +79,7 @@ export DEVKITPPC=/opt/devkitpro/devkitPPC
 export PATH="$HOME/bin:$PATH"
 export PATH="$DEVKITARM/bin:$PATH"
 export PATH="/usr/local/bin:/usr/bin:$PATH"
+export PATH="/usr/local/Cellar/llvm/7.0.0/bin:$PATH"
 
 if type rbenv >/dev/null 2>&1; then
     export PATH="$HOME/.rbenv/bin:$PATH"
