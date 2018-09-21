@@ -33,6 +33,7 @@ let g:clang_format_auto = 1
 let g:clang_check_syntax_auto = 1
 let g:clang_verbose_pmenu = 1
 let g:clang_auto = 0
+let g:clang_compilation_database = './build'
 
 " Mouse
 set mouse=a
@@ -94,5 +95,5 @@ nnoremap ,g :!ctags<CR>
 " highlight
 " <cr> should not only clear highlighted search, but flash the current
 " cursor location.
-nnoremap <CR> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
+nnoremap <C-e> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
 
