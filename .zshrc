@@ -18,11 +18,6 @@ export SVN_EDITOR='vim'
 autoload bashcompinit
 bashcompinit
 
-if type rbenv >/dev/null 2>&1; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
-fi
-
 # less
 export LESSCHARSET=utf-8
 
@@ -84,6 +79,11 @@ export DEVKITPPC=/opt/devkitpro/devkitPPC
 export PATH="$HOME/bin:$PATH"
 export PATH="$DEVKITARM/bin:$PATH"
 export PATH="/usr/local/bin:/usr/bin:$PATH"
+
+if type rbenv >/dev/null 2>&1; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
 
 # direnv
 eval "$(direnv hook zsh)"
