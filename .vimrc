@@ -1,3 +1,7 @@
+if exists('g:home_vim_loaded')
+  finish
+endif
+
 if &compatible
     set nocompatible
 endif
@@ -90,6 +94,7 @@ nnoremap <C-e> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>
 
 " load .vimrc in current directory
 if filereadable(".vimrc")
-    source .vimrc
+  let g:home_vim_loaded = 1
+  source .vimrc
 endif
 
