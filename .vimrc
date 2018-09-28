@@ -107,6 +107,12 @@ if filereadable(".vimrc")
   source .vimrc
 endif
 
+" load .vimrc.user in current directory
+if filereadable(".vimrc.user")
+  let g:home_vim_loaded = 1
+  source .vimrc.user
+endif
+
 " Show definetion of function cousor word on quickfix
 noremap <C-]> :<C-u>exe("Gtags ".expand('<cword>'))<CR>
 " Show reference of cousor word on quickfix
