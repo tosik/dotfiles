@@ -19,6 +19,7 @@ call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
 call dein#add('tosik/vim-clang', {'rev': 'add-clang-complete-reload-func'})
 call dein#add('w0rp/ale')
+call dein#add('vim-scripts/gtags.vim')
 
 call dein#end()
 
@@ -94,9 +95,6 @@ endfunction
 nnoremap ,c :e %<.cpp<CR>
 nnoremap ,h :e %<.h<CR>
 
-" generate tags
-nnoremap ,g :!ctags .<CR>
-
 " highlight
 nnoremap <C-e> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
 
@@ -108,4 +106,9 @@ if filereadable(".vimrc")
   let g:home_vim_loaded = 1
   source .vimrc
 endif
+
+" Show definetion of function cousor word on quickfix
+noremap <C-]> :<C-u>exe("Gtags ".expand('<cword>'))<CR>
+" Show reference of cousor word on quickfix
+noremap <C-'> :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
 
