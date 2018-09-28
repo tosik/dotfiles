@@ -68,10 +68,12 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " ALE
+let g:ale_sign_column_always = 1
+let g:ale_c_build_dir_names = ['./build/']
 let g:ale_c_parse_compile_commands = 1
 let g:ale_linters = {
-      \   'c' : ['clang'],
-      \   'cpp' : ['clang']
+      \   'c' : ['clangd'],
+      \   'cpp' : ['clangd']
       \}
 nnoremap ,o :ALEDetail<CR>
 
