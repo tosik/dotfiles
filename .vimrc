@@ -19,6 +19,7 @@ call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
 call dein#add('tosik/vim-clang', {'rev': 'add-clang-complete-reload-func'})
 call dein#add('w0rp/ale')
+call dein#add('itchyny/lightline.vim')
 
 call dein#end()
 
@@ -55,6 +56,9 @@ set autoread
 " command compl
 set wildmenu wildmode=list:longest,full
 
+" statusline
+set laststatus=2
+
 " NERDTree
 let g:NERDTreeShowBookmarks = 1
 let NERDTreeShowHidden = 1
@@ -67,6 +71,8 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " ALE
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_sign_column_always = 1
 let g:ale_c_parse_compile_commands = 1
 let g:ale_linters = {
       \   'c' : ['clang'],
