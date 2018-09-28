@@ -18,7 +18,7 @@ call dein#add('rking/ag.vim')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
 call dein#add('tosik/vim-clang', {'rev': 'add-clang-complete-reload-func'})
-call dein#add('w0rp/ale')
+call dein#add('tosik/ale', {'rev': 'customized'})
 call dein#add('itchyny/lightline.vim')
 call dein#add('vim-scripts/gtags.vim')
 
@@ -75,6 +75,7 @@ let g:ctrlp_custom_ignore = {
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_c_build_dir_names = ['./build/']
 let g:ale_c_parse_compile_commands = 1
+"let g:ale_cpp_clangd_options = "-compile-commands-dir=" . getcwd() . "/build"
 let g:ale_linters = {
       \   'c' : ['clangd'],
       \   'cpp' : ['clangd']
