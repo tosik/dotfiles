@@ -20,6 +20,7 @@ call dein#add('kana/vim-operator-user')
 call dein#add('tosik/vim-clang', {'rev': 'add-clang-complete-reload-func'})
 call dein#add('w0rp/ale')
 call dein#add('itchyny/lightline.vim')
+call dein#add('vim-scripts/gtags.vim')
 
 call dein#end()
 
@@ -72,11 +73,11 @@ let g:ctrlp_custom_ignore = {
 
 " ALE
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_sign_column_always = 1
+let g:ale_c_build_dir_names = ['./build/']
 let g:ale_c_parse_compile_commands = 1
 let g:ale_linters = {
-      \   'c' : ['clang'],
-      \   'cpp' : ['clang']
+      \   'c' : ['clangd'],
+      \   'cpp' : ['clangd']
       \}
 nnoremap ,o :ALEDetail<CR>
 
@@ -100,9 +101,6 @@ endfunction
 nnoremap ,c :e %<.cpp<CR>
 nnoremap ,h :e %<.h<CR>
 
-" generate tags
-nnoremap ,g :!ctags .<CR>
-
 " highlight
 nnoremap <C-e> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
 
@@ -114,4 +112,15 @@ if filereadable(".vimrc")
   let g:home_vim_loaded = 1
   source .vimrc
 endif
+
+" load .vimrc.user in current directory
+if filereadable(".vimrc.user")
+  let g:home_vim_loaded = 1
+  source .vimrc.user
+endif
+
+" Show definetion of function cousor word on quickfix
+noremap <C-]> :<C-u>exe("Gtags ".expand('<cword>'))<CR>
+" Show reference of cousor word on quickfix
+noremap <C-'> :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
 
