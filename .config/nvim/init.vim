@@ -140,7 +140,7 @@ endif
 " Show definetion of function cousor word on quickfix
 noremap <C-]> :<C-u>exe("Gtags ".expand('<cword>'))<CR>
 " Show reference of cousor word on quickfix
-noremap <C-r> :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
+noremap } :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
 
 " nvim-gdb
 let g:nvimgdb_config = {
