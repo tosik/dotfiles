@@ -17,7 +17,7 @@ call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('rking/ag.vim')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
-call dein#add('tosik/vim-clang', {'rev': 'add-clang-complete-reload-func'})
+call dein#add('tosik/vim-clang', {'rev': 'customized'})
 call dein#add('tosik/ale', {'rev': 'customized'})
 call dein#add('itchyny/lightline.vim')
 call dein#add('vim-scripts/gtags.vim')
@@ -124,5 +124,5 @@ endif
 " Show definetion of function cousor word on quickfix
 noremap <C-]> :<C-u>exe("Gtags ".expand('<cword>'))<CR>
 " Show reference of cousor word on quickfix
-noremap <C-r> :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
+noremap } :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
 
