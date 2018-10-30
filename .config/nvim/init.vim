@@ -142,3 +142,18 @@ noremap <C-]> :<C-u>exe("Gtags ".expand('<cword>'))<CR>
 " Show reference of cousor word on quickfix
 noremap <C-r> :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
 
+" nvim-gdb
+let g:nvimgdb_config = {
+      \ 'key_until':      '<f4>',
+      \ 'key_continue':   '<f5>',
+      \ 'key_next':       '<f10>',
+      \ 'key_step':       '<f11>',
+      \ 'key_finish':     '<f12>',
+      \ 'key_breakpoint': '<f8>',
+      \ 'key_frameup':    '<c-i>',
+      \ 'key_framedown':  '<c-y>',
+      \ 'key_eval':       '<f9>',
+      \ 'set_tkeymaps':   function('nvimgdb#SetTKeymaps'),
+      \ 'set_keymaps':    function('nvimgdb#SetKeymaps'),
+      \ 'unset_keymaps':  function('nvimgdb#UnsetKeymaps'),
+      \ }

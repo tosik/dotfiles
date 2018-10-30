@@ -1,3 +1,6 @@
+# good bye, vim
+alias vim="nvim"
+
 # complete
 autoload -Uz compinit
 compinit -u
