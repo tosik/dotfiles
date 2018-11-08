@@ -38,6 +38,9 @@ endif
 filetype plugin indent on
 syntax enable
 
+au BufReadPost *.metal set syntax=cpp
+au BufReadPost *.mm set syntax=cpp
+
 set expandtab
 set tabstop=2
 set shiftwidth=2
