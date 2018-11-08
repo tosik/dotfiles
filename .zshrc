@@ -94,6 +94,7 @@ fi
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOME/.pyenv/versions/3.7.1/include/python3.7m/"
 
 # direnv
 eval "$(direnv hook zsh)"
