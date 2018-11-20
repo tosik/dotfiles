@@ -73,7 +73,7 @@ export DEVKITPPC=/opt/devkitpro/devkitPPC
 # path
 export PATH="$HOME/bin:$PATH"
 export PATH="$DEVKITARM/bin:$PATH"
-export PATH="/usr/local/bin:/usr/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/Cellar/llvm/7.0.0/bin:$PATH"
 
 # rbenv
@@ -90,4 +90,19 @@ export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOME/.pyenv/versions/3.7.1/inclu
 
 # direnv
 eval "$(direnv hook zsh)"
+
+# mac
+case ${OSTYPE} in
+  darwin*)
+  export PATH="/usr/bin:$PATH"
+  ;;
+esac
+
+# msys
+case ${OSTYPE} in
+  msys*)
+  export PATH="/mingw64/bin:$PATH"
+  alias vim="vim" # come back, vim!
+  ;;
+esac
 
