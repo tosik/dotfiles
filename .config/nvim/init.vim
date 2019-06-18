@@ -27,7 +27,8 @@ if dein#load_state(expand('~/.config/nvim/dein'))
   call dein#add('tosik/ale', {'rev': 'customized'})
   call dein#add('itchyny/lightline.vim')
   call dein#add('vim-scripts/gtags.vim')
-  call dein#add('sakhnik/nvim-gdb')
+  "call dein#add('sakhnik/nvim-gdb')
+  call dein#add('sakhnik/nvim-gdb', {'rev': 'legacy'})
 
   " Required:
   call dein#end()
@@ -40,6 +41,7 @@ syntax enable
 
 au BufReadPost *.metal set syntax=cpp
 au BufReadPost *.mm set syntax=cpp
+au BufReadPost *.p8 set syntax=lua
 
 set expandtab
 set tabstop=2
