@@ -23,17 +23,24 @@ if dein#load_state(expand('~/.config/nvim/dein'))
   call dein#add('rking/ag.vim')
   call dein#add('rhysd/vim-clang-format')
   call dein#add('kana/vim-operator-user')
-  call dein#add('tosik/vim-clang', {'rev': 'add-clang-complete-reload-func'})
-  call dein#add('tosik/ale', {'rev': 'customized'})
   call dein#add('itchyny/lightline.vim')
   call dein#add('vim-scripts/gtags.vim')
+
   "call dein#add('sakhnik/nvim-gdb')
   call dein#add('sakhnik/nvim-gdb', {'rev': 'legacy'})
+
+  call dein#add('tosik/vim-clang', {'rev': 'add-clang-complete-reload-func'})
+  "call dein#add('justmao945/vim-clang')
+  "
+  call dein#add('tosik/ale', {'rev': 'customized'})
+  "call dein#add('w0rp/ale')
 
   " Required:
   call dein#end()
   call dein#save_state()
 endif
+
+nnoremap ,i :call dein#recache_runtimepath()<CR>
 
 " Required:
 filetype plugin indent on
@@ -50,6 +57,9 @@ set noswapfile
 
 set encoding=utf-8
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*/obj/*,*.dep,*.o,*/bin/*,*/build/*,*.ttf
+
+" color
+colorscheme elflord
 
 " python provider
 let g:python_host_prog  = expand('python2')
@@ -88,7 +98,7 @@ let NERDTreeShowHidden = 1
 " CtrlP
 let g:ctrlp_max_files = 100000
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)|tmp|log|node_modules$',
   \ 'file': '\v\.(exe|so|dll|meta|prefab)$',
   \ }
 
@@ -97,7 +107,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_c_build_dir_names = ['./build/']
 let g:ale_c_parse_compile_commands = 1
 "let g:ale_cpp_clangd_options = "-compile-commands-dir=" . getcwd() . "/build"
-let g:ale_lint_delay = 3000
+let g:ale_lint_delay = 5000
 let g:ale_linters = {
       \   'c' : ['clangd'],
       \   'cpp' : ['clangd']
@@ -129,6 +139,9 @@ nnoremap <C-e> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>
 
 " check clang syntax
 nnoremap ,s :ClangSyntaxCheck<CR>:w<CR>
+
+" show current file path
+nnoremap ,q :echo expand("%")<CR>
 
 " load .vimrc in current directory
 if filereadable(".vimrc")
@@ -162,3 +175,31 @@ let g:nvimgdb_config = {
       \ 'set_keymaps':    function('nvimgdb#SetKeymaps'),
       \ 'unset_keymaps':  function('nvimgdb#UnsetKeymaps'),
       \ }
+
+" lightline
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ ['mode', 'paste'], ['readonly', 'filename', 'modified'], ['ale_message'] ]
+      \ },
+      \ 'component_expand': {
+      \   'ale_message': 'LightlineAleMessage'
+      \ },
+      \ 'component_type': {
+      \   'ale_message': 'error'
+      \ }
+      \ }
+function! LightlineAleMessage() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.error == 0 ? '' : printf(
+    \   '[Ale] %d errors',
+    \   all_errors
+    \)
+endfunction
+augroup AutoAleMessageGroup
+  autocmd!
+  autocmd User ALELintPost call lightline#update()
+augroup END

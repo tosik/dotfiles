@@ -74,13 +74,7 @@ export DEVKITPPC=/opt/devkitpro/devkitPPC
 export PATH="$HOME/bin:$PATH"
 export PATH="$DEVKITARM/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/Cellar/llvm/7.0.0/bin:$PATH"
-
-# rbenv
-if type rbenv >/dev/null 2>&1; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
-fi
+export PATH="/usr/local/Cellar/llvm/8.0.0_1/bin:$PATH"
 
 # pyenv
 if type pyenv >/dev/null 2>&1; then
@@ -110,3 +104,21 @@ case ${OSTYPE} in
   ;;
 esac
 
+# capturing stdio (usage: capture_stdio [pid])
+capture_stdio() {
+    sudo dtrace -p "$1" -qn '
+        syscall::write*:entry
+        /pid == $target && arg0 == 1/ {
+            printf("%s", copyinstr(arg1, arg2));
+        }
+    '
+}
+
+# rbenv
+if type rbenv >/dev/null 2>&1; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
+
+# mysql-client
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
