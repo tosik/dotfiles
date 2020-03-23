@@ -25,6 +25,17 @@ if dein#load_state(expand('~/.config/nvim/dein'))
   call dein#add('kana/vim-operator-user')
   call dein#add('itchyny/lightline.vim')
   call dein#add('vim-scripts/gtags.vim')
+  call dein#add('mattn/vim-goimports')
+  call dein#add('buoto/gotests-vim')
+
+  call dein#add('prabirshrestha/async.vim')
+  call dein#add('prabirshrestha/vim-lsp')
+  call dein#add('prabirshrestha/asyncomplete.vim')
+  call dein#add('prabirshrestha/asyncomplete-lsp.vim')
+  call dein#add('mattn/vim-lsp-settings')
+
+  call dein#add('leafgarland/typescript-vim')
+  call dein#add('peitalin/vim-jsx-typescript')
 
   "call dein#add('sakhnik/nvim-gdb')
   call dein#add('sakhnik/nvim-gdb', {'rev': 'legacy'})
@@ -34,6 +45,12 @@ if dein#load_state(expand('~/.config/nvim/dein'))
   "
   call dein#add('tosik/ale', {'rev': 'customized'})
   "call dein#add('w0rp/ale')
+
+  " colorscheme
+  call dein#add('tomasr/molokai')
+  call dein#add('jonathanfilip/vim-lucius')
+  call dein#add('gosukiwi/vim-atom-dark')
+  call dein#add('raphamorim/lucario')
 
   " Required:
   call dein#end()
@@ -49,6 +66,8 @@ syntax enable
 au BufReadPost *.metal set syntax=cpp
 au BufReadPost *.mm set syntax=cpp
 au BufReadPost *.p8 set syntax=lua
+" au BufRead,BufNewFile *.ts set filetype=typescript
+" au BufRead,BufNewFile *.tsx set filetype=typescriptreact
 
 set expandtab
 set tabstop=2
@@ -59,7 +78,7 @@ set encoding=utf-8
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*/obj/*,*.dep,*.o,*/bin/*,*/build/*,*.ttf
 
 " color
-colorscheme elflord
+colorscheme lucario
 
 " python provider
 let g:python_host_prog  = expand('python2')
@@ -96,7 +115,7 @@ let g:NERDTreeShowBookmarks = 1
 let NERDTreeShowHidden = 1
 
 " CtrlP
-let g:ctrlp_max_files = 100000
+let g:ctrlp_max_files = 10000
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)|tmp|log|node_modules$',
   \ 'file': '\v\.(exe|so|dll|meta|prefab)$',
@@ -203,3 +222,8 @@ augroup AutoAleMessageGroup
   autocmd!
   autocmd User ALELintPost call lightline#update()
 augroup END
+
+" omnifunc
+set omnifunc=lsp#complete
+
+autocmd BufWritePre <buffer> LspDocumentFormatSync

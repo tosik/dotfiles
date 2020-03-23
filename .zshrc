@@ -72,8 +72,10 @@ export DEVKITPPC=/opt/devkitpro/devkitPPC
 
 # path
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 export PATH="$DEVKITARM/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/google-cloud-sdk/bin:$PATH"
 export PATH="/usr/local/Cellar/llvm/8.0.0_1/bin:$PATH"
 
 # pyenv
@@ -122,3 +124,6 @@ fi
 
 # mysql-client
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
+# golang
+export GO111MODULE=on
