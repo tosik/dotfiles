@@ -11,10 +11,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'dense-analysis/ale'
   Plug 'buoto/gotests-vim'
+  Plug 'mattn/vim-goimports'
   Plug 'itchyny/lightline.vim'
   Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   Plug 'scrooloose/nerdtree'
+  Plug 'rking/ag.vim'
 call plug#end()
 
 
@@ -114,17 +115,20 @@ augroup END
 "----------------------------------------------------
 let g:ctrlp_max_files = 10000
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)|tmp|log|node_modules$',
-  \ 'file': '\v\.(exe|so|dll|meta|prefab)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)|tmp|node_modules$',
+  \ 'file': '\v\.(exe|so|dll|meta|prefab|log)$',
   \ }
 
+"----------------------------------------------------
 " ALE
+"----------------------------------------------------
 let g:ale_lint_delay = 5000
 let g:ale_linters = {
   \   'c' : ['clangd'],
   \   'cpp' : ['clangd'],
-  \   'go' : ['golangci-lint', 'gofmt']
+  \   'go' : ['golangci-lint']
   \}
+let g:ale_go_golangci_lint_options = ''
 
 
 "----------------------------------------------------
@@ -134,10 +138,17 @@ function AutoGoBuild()
   GoImports
   GoBuild
 endfunction
-autocmd BufWritePre,FileWritePre *.go call AutoGoBuild()
+" autocmd BufWritePre,FileWritePre *.go call AutoGoBuild()
 
 
 "----------------------------------------------------
 " LSP
 "----------------------------------------------------
 autocmd BufWritePre <buffer> LspDocumentFormatSync
+nnoremap ,d :LspDefinition<CR>
+
+
+"----------------------------------------------------
+" Ag
+"----------------------------------------------------
+nnoremap ,s :Ag <cword><CR>
