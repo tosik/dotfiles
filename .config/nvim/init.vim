@@ -62,7 +62,6 @@ set smartcase
 
 colorscheme mustang
 
-
 "----------------------------------------------------
 " Clang
 "----------------------------------------------------
@@ -156,16 +155,6 @@ let g:ale_go_golangci_lint_options = ''
 
 
 "----------------------------------------------------
-" Go
-"----------------------------------------------------
-function AutoGoBuild()
-  GoImports
-  GoBuild
-endfunction
-" autocmd BufWritePre,FileWritePre *.go call AutoGoBuild()
-
-
-"----------------------------------------------------
 " LSP
 "----------------------------------------------------
 augroup AutoLsp
@@ -175,9 +164,17 @@ augroup END
 nnoremap ,d :LspDefinition<CR>
 nnoremap ,r :LspReferences<CR>
 nnoremap ,a :LspDocumentDiagnostics<CR>
+nnoremap ,t :LspRename<CR>
 
 
 "----------------------------------------------------
 " Ag
 "----------------------------------------------------
 nnoremap ,s :Ag <cword><CR>
+
+"----------------------------------------------------
+" load .vimrc.user in current directory
+"----------------------------------------------------
+if filereadable(".local.vimrc")
+  source .local.vimrc
+endif
