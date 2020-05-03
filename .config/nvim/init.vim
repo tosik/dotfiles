@@ -7,15 +7,17 @@ call plug#begin('~/.vim/plugged')
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'mattn/vim-lsp-settings'
+  "Plug 'piec/vim-lsp-clangd'
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
-  Plug 'dense-analysis/ale'
+  "Plug 'dense-analysis/ale'
   Plug 'buoto/gotests-vim'
   Plug 'mattn/vim-goimports'
   Plug 'itchyny/lightline.vim'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'scrooloose/nerdtree'
   Plug 'rking/ag.vim'
+  Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 
   " colorschemes
   Plug 'altercation/vim-colors-solarized' " solarized
@@ -105,32 +107,32 @@ nnoremap <C-e> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>
 "----------------------------------------------------
 " lightline
 "----------------------------------------------------
-let g:lightline = {
-  \ 'active': {
-  \   'left': [ ['mode', 'paste'], ['readonly', 'filename', 'modified'], ['ale_message'] ]
-  \ },
-  \ 'component_expand': {
-  \   'ale_message': 'LightlineAleMessage'
-  \ },
-  \ 'component_type': {
-  \   'ale_message': 'error'
-  \ }
-  \ }
-function! LightlineAleMessage() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-
-  return l:counts.error == 0 ? '' : printf(
-  \   '[Ale] %d errors',
-  \   all_errors
-  \)
-endfunction
-augroup AutoAleMessageGroup
-  autocmd!
-  autocmd User ALELintPost call lightline#update()
-augroup END
+"let g:lightline = {
+"  \ 'active': {
+"  \   'left': [ ['mode', 'paste'], ['readonly', 'filename', 'modified'], ['ale_message'] ]
+"  \ },
+"  \ 'component_expand': {
+"  \   'ale_message': 'LightlineAleMessage'
+"  \ },
+"  \ 'component_type': {
+"  \   'ale_message': 'error'
+"  \ }
+"  \ }
+"function! LightlineAleMessage() abort
+"  let l:counts = ale#statusline#Count(bufnr(''))
+"
+"  let l:all_errors = l:counts.error + l:counts.style_error
+"  let l:all_non_errors = l:counts.total - l:all_errors
+"
+"  return l:counts.error == 0 ? '' : printf(
+"  \   '[Ale] %d errors',
+"  \   all_errors
+"  \)
+"endfunction
+"augroup AutoAleMessageGroup
+"  autocmd!
+"  autocmd User ALELintPost call lightline#update()
+"augroup END
 
 
 "----------------------------------------------------
@@ -145,18 +147,25 @@ let g:ctrlp_custom_ignore = {
 "----------------------------------------------------
 " ALE
 "----------------------------------------------------
-let g:ale_lint_delay = 5000
-let g:ale_linters = {
-  \   'c' : ['clangd'],
-  \   'cpp' : ['clangd'],
-  \   'go' : ['golangci-lint']
-  \}
-let g:ale_go_golangci_lint_options = ''
+"let g:ale_lint_delay = 5000
+"let g:ale_linters = {
+"  \   'c' : ['clangd'],
+"  \   'cpp' : ['clangd'],
+"  \   'go' : ['golangci-lint']
+"  \}
+"let g:ale_go_golangci_lint_options = ''
 
 
 "----------------------------------------------------
 " LSP
 "----------------------------------------------------
+"let g:lsp_log_verbose = 1
+"let g:lsp_log_file = expand('~/vim-lsp.log')
+
+let g:lsp_settings = {
+\  'clangd': {'cmd': ['clangd', '-compile-commands-dir=build/debug']},
+\}
+
 augroup AutoLsp
   autocmd!
   autocmd BufWritePre <buffer> :LspDocumentFormatSync
@@ -181,3 +190,4 @@ endif
 if filereadable(".project.vimrc")
   source .project.vimrc
 endif
+

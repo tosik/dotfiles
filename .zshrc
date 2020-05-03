@@ -71,12 +71,13 @@ export DEVKITARM=/opt/devkitpro/devkitARM
 export DEVKITPPC=/opt/devkitpro/devkitPPC
 
 # path
+#export PATH="/usr/local/Cellar/llvm/8.0.0_1/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$DEVKITARM/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/google-cloud-sdk/bin:$PATH"
-export PATH="/usr/local/Cellar/llvm/8.0.0_1/bin:$PATH"
 
 # pyenv
 if type pyenv >/dev/null 2>&1; then
