@@ -174,8 +174,11 @@ nnoremap ,t :LspRename<CR>
 nnoremap ,s :Ag <cword><CR>
 
 "----------------------------------------------------
-" load .vimrc.user in current directory
+" load .local.vimrc in current directory
 "----------------------------------------------------
 if filereadable(".local.vimrc")
   source .local.vimrc
+endif
+if filereadable(".project.vimrc")
+  source .project.vimrc
 endif
