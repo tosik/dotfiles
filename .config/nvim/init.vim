@@ -134,6 +134,7 @@ augroup AutoLsp
 augroup END
 nnoremap ,d :LspDefinition<CR>
 nnoremap ,r :LspReferences<CR>
+nnoremap ,i :LspImplementation<CR>
 nnoremap ,a :LspDocumentDiagnostics<CR>
 nnoremap ,t :LspRename<CR>
 
