@@ -7,10 +7,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'mattn/vim-lsp-settings'
-  "Plug 'piec/vim-lsp-clangd'
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
-  "Plug 'dense-analysis/ale'
   Plug 'buoto/gotests-vim'
   Plug 'mattn/vim-goimports'
   Plug 'itchyny/lightline.vim'
@@ -64,6 +62,12 @@ set smartcase
 
 colorscheme mustang
 
+
+"----------------------------------------------------
+" Python
+"----------------------------------------------------
+
+
 "----------------------------------------------------
 " Clang
 "----------------------------------------------------
@@ -105,37 +109,6 @@ nnoremap <C-e> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>
 
 
 "----------------------------------------------------
-" lightline
-"----------------------------------------------------
-"let g:lightline = {
-"  \ 'active': {
-"  \   'left': [ ['mode', 'paste'], ['readonly', 'filename', 'modified'], ['ale_message'] ]
-"  \ },
-"  \ 'component_expand': {
-"  \   'ale_message': 'LightlineAleMessage'
-"  \ },
-"  \ 'component_type': {
-"  \   'ale_message': 'error'
-"  \ }
-"  \ }
-"function! LightlineAleMessage() abort
-"  let l:counts = ale#statusline#Count(bufnr(''))
-"
-"  let l:all_errors = l:counts.error + l:counts.style_error
-"  let l:all_non_errors = l:counts.total - l:all_errors
-"
-"  return l:counts.error == 0 ? '' : printf(
-"  \   '[Ale] %d errors',
-"  \   all_errors
-"  \)
-"endfunction
-"augroup AutoAleMessageGroup
-"  autocmd!
-"  autocmd User ALELintPost call lightline#update()
-"augroup END
-
-
-"----------------------------------------------------
 " CtrlP
 "----------------------------------------------------
 let g:ctrlp_max_files = 10000
@@ -143,17 +116,6 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)|tmp|node_modules$',
   \ 'file': '\v\.(exe|so|dll|meta|prefab|log)$',
   \ }
-
-"----------------------------------------------------
-" ALE
-"----------------------------------------------------
-"let g:ale_lint_delay = 5000
-"let g:ale_linters = {
-"  \   'c' : ['clangd'],
-"  \   'cpp' : ['clangd'],
-"  \   'go' : ['golangci-lint']
-"  \}
-"let g:ale_go_golangci_lint_options = ''
 
 
 "----------------------------------------------------
