@@ -9,6 +9,7 @@ brew 'jq'
 brew 'cmake'
 brew 'llvm'
 brew 'the_silver_searcher'
+brew 'watch'
 
 tap 'mongodb/brew'
 brew 'mongodb-community'

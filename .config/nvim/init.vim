@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'rking/ag.vim'
   Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+  Plug 'mechatroner/rainbow_csv'
 
   " colorschemes
   Plug 'altercation/vim-colors-solarized' " solarized
@@ -149,6 +150,7 @@ nnoremap ,s :Ag <cword><CR>
 " Quickfix shortcut
 "----------------------------------------------------
 nnoremap ,n :cn<CR>
+
 
 "----------------------------------------------------
 " load .local.vimrc in current directory
