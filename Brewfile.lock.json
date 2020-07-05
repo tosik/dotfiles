@@ -65,22 +65,22 @@
         }
       },
       "bazelisk": {
-        "version": "1.4.0",
+        "version": "1.5.0",
         "bottle": {
           "cellar": ":any_skip_relocation",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/bazelisk-1.4.0.catalina.bottle.tar.gz",
-              "sha256": "943f74776e478d0c254e3a71d318849a28a204fa004da7e6eb4373d0caa52ae7"
+              "url": "https://homebrew.bintray.com/bottles/bazelisk-1.5.0.catalina.bottle.tar.gz",
+              "sha256": "9c189bca9ddac7acaab8da42f451a8707320c52b4b233ab9b42cbfefc94310d9"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/bazelisk-1.4.0.mojave.bottle.tar.gz",
-              "sha256": "943f74776e478d0c254e3a71d318849a28a204fa004da7e6eb4373d0caa52ae7"
+              "url": "https://homebrew.bintray.com/bottles/bazelisk-1.5.0.mojave.bottle.tar.gz",
+              "sha256": "9c189bca9ddac7acaab8da42f451a8707320c52b4b233ab9b42cbfefc94310d9"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/bazelisk-1.4.0.high_sierra.bottle.tar.gz",
-              "sha256": "943f74776e478d0c254e3a71d318849a28a204fa004da7e6eb4373d0caa52ae7"
+              "url": "https://homebrew.bintray.com/bottles/bazelisk-1.5.0.high_sierra.bottle.tar.gz",
+              "sha256": "9c189bca9ddac7acaab8da42f451a8707320c52b4b233ab9b42cbfefc94310d9"
             }
           }
         }
@@ -107,22 +107,22 @@
         }
       },
       "go": {
-        "version": "1.14.3",
+        "version": "1.14.4",
         "bottle": {
           "cellar": "/usr/local/Cellar",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/go-1.14.3.catalina.bottle.tar.gz",
-              "sha256": "e3c4f834acba4e4db3f2b848860a040de1d8dec158545e8aaa3dd2f380c9c950"
+              "url": "https://homebrew.bintray.com/bottles/go-1.14.4.catalina.bottle.tar.gz",
+              "sha256": "935214ab166d8da148af812614545a25778e4ee11c2ea5cfd332bff72ec4046e"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/go-1.14.3.mojave.bottle.tar.gz",
-              "sha256": "70ae2f7f10ccd4926be3f5f7482afe8f0d0fe78f0e4fa2eea05c20a80ffa9c6e"
+              "url": "https://homebrew.bintray.com/bottles/go-1.14.4.mojave.bottle.tar.gz",
+              "sha256": "f1ef93181b0c4c97617b74d787ced8e18ceca12ee52d9559a8db0f21eb84fa43"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/go-1.14.3.high_sierra.bottle.tar.gz",
-              "sha256": "9b334b2eff3b1d40c74d89daeec0b08d4a0e331103c6c10c08d060e86605f61b"
+              "url": "https://homebrew.bintray.com/bottles/go-1.14.4.high_sierra.bottle.tar.gz",
+              "sha256": "4b5e79d15f4bb768bc0cefe54a670a525f21257f2532697df76d44c8cc0e8a7a"
             }
           }
         }
@@ -228,7 +228,7 @@
         }
       },
       "mongodb-community": {
-        "version": "4.2.7",
+        "version": "4.2.8",
         "bottle": false
       },
       "watch": {
@@ -251,20 +251,27 @@
             }
           }
         }
+      },
+      "ibazel": {
+        "version": "0.13.1",
+        "bottle": false
       }
     },
     "tap": {
       "mongodb/brew": {
-        "revision": "3da8ae0e8cc6d250d852e9d0f2abea4831580963"
+        "revision": "4eb76f84049afd1f3633181d16b79b4e841bce2f"
+      },
+      "bazelbuild/tap": {
+        "revision": "02f7cb8ea548e0c8daafa13429626a577ab40113"
       }
     }
   },
   "system": {
     "macos": {
       "catalina": {
-        "HOMEBREW_VERSION": "2.3.0",
+        "HOMEBREW_VERSION": "2.4.3",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "c1505bf9538fd6a86af7786d60fc0971feb91176",
+        "Homebrew/homebrew-core": "8abf2651f6322a3d01f8900edba5e3837cd2ab05",
         "CLT": "1103.0.32.62",
         "Xcode": "11.5",
         "macOS": "10.15.5"

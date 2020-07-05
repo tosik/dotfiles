@@ -13,3 +13,6 @@ brew 'watch'
 
 tap 'mongodb/brew'
 brew 'mongodb-community'
+
+tap 'bazelbuild/tap'
+brew 'ibazel'
