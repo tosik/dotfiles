@@ -130,7 +130,7 @@ let g:lsp_settings = {
 
 augroup AutoLsp
   autocmd!
-  autocmd BufWritePre <buffer> :LspDocumentFormatSync
+  autocmd BufWritePre cpp,h,hpp,rb,go,vim :LspDocumentFormatSync
 augroup END
 nnoremap ,d :LspDefinition<CR>
 nnoremap ,r :LspReferences<CR>
