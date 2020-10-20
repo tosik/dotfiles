@@ -16,6 +16,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'rking/ag.vim'
   Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+  Plug 'mechatroner/rainbow_csv'
+  Plug 'ruanyl/vim-gh-line'
 
   " colorschemes
   Plug 'altercation/vim-colors-solarized' " solarized
@@ -149,6 +151,14 @@ nnoremap ,s :Ag <cword><CR>
 " Quickfix shortcut
 "----------------------------------------------------
 nnoremap ,n :cn<CR>
+
+
+"----------------------------------------------------
+" gh line - github line open
+"----------------------------------------------------
+
+let g:gh_line_map_default = 0
+let g:gh_line_blame_map_default = 1
 
 "----------------------------------------------------
 " load .local.vimrc in current directory

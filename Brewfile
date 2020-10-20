@@ -1,0 +1,18 @@
+brew 'zsh'
+brew 'neovim'
+brew 'hub'
+brew 'bazelisk'
+brew 'direnv'
+brew 'go'
+brew 'yarn'
+brew 'jq'
+brew 'cmake'
+brew 'llvm'
+brew 'the_silver_searcher'
+brew 'watch'
+
+tap 'mongodb/brew'
+brew 'mongodb-community'
+
+tap 'bazelbuild/tap'
+brew 'ibazel'
