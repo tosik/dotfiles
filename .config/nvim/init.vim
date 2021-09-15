@@ -22,6 +22,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'dense-analysis/ale'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+  Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ }
+  Plug 'tpope/vim-projectionist'
 
   " colorschemes
   Plug 'altercation/vim-colors-solarized' " solarized
@@ -185,7 +189,8 @@ let g:ale_linters = {
       \ 'go': ['gobuild', 'golangci-lint'],
       \ }
 let g:ale_go_golangci_lint_options = ''
-
+highlight! ALEError ctermbg=124
+highlight! ALEWarning ctermbg=125
 
 "----------------------------------------------------
 " fzf
@@ -194,6 +199,14 @@ let g:fzf_layout = {
       \ 'up': '~30%' }
 
 nnoremap <silent> <C-p> :GFiles <C-R>=getcwd()<CR><CR>
+
+"----------------------------------------------------
+" vim-prettier
+"----------------------------------------------------
+let g:prettier#autoformat = 0
+let g:prettier#quickfix_enabled = 0
+let g:prettier#exec_cmd_async = 1
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql,*.vue,*.html PrettierAsync
 
 "----------------------------------------------------
 " load .local.vimrc in current directory
