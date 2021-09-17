@@ -2,24 +2,15 @@
 " Plugins
 "----------------------------------------------------
 call plug#begin('~/.vim/plugged')
-  "Plug 'prabirshrestha/async.vim'
-  "Plug 'prabirshrestha/vim-lsp'
-  "Plug 'prabirshrestha/asyncomplete.vim'
-  "Plug 'prabirshrestha/asyncomplete-lsp.vim'
-  "Plug 'mattn/vim-lsp-settings'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
-  Plug 'buoto/gotests-vim'
-  Plug 'mattn/vim-goimports'
   Plug 'itchyny/lightline.vim'
-  "Plug 'ctrlpvim/ctrlp.vim'
   Plug 'scrooloose/nerdtree'
   Plug 'rking/ag.vim'
   Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
   Plug 'mechatroner/rainbow_csv'
   Plug 'ruanyl/vim-gh-line'
-  Plug 'dense-analysis/ale'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'prettier/vim-prettier', {
@@ -129,26 +120,6 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 
-"----------------------------------------------------
-" LSP
-"----------------------------------------------------
-"let g:lsp_log_verbose = 1
-"let g:lsp_log_file = expand('~/vim-lsp.log')
-
-let g:lsp_settings = {
-\  'clangd': {'cmd': ['clangd', '-compile-commands-dir=build/debug']},
-\}
-
-"augroup AutoLsp
-"  autocmd!
-"  autocmd BufWritePre cpp,h,hpp,rb,go,vim :LspDocumentFormatSync
-"augroup END
-"nnoremap ,d :LspDefinition<CR>
-"nnoremap ,r :LspReferences<CR>
-"nnoremap ,i :LspImplementation<CR>
-"nnoremap ,a :LspDocumentDiagnostics<CR>
-"nnoremap ,t :LspRename<CR>
-
 let g:coc_global_extensions=[ 'coc-omnisharp' ]
 nmap <silent> ,d <Plug>(coc-definition)
 "nmap <silent> gy <Plug>(coc-type-definition)
@@ -160,7 +131,8 @@ vmap <silent> ,f <Plug>(coc-codeaction-selected)<down>
 command! -nargs=0 Fix :call CocAction('format')
 augroup AutoLsp
   autocmd!
-  autocmd BufWritePre cpp,h,hpp,rb,go,vim :call CocAction('format')
+  autocmd BufWritePre *.go :Fix
+  autocmd BufWritePre *.cpp,*.h,*.hpp,*.rb :Fix
   autocmd BufWritePre *.cs :Fix
 augroup END
 
@@ -183,14 +155,6 @@ nnoremap ,n :cn<CR>
 
 let g:gh_line_map_default = 0
 let g:gh_line_blame_map_default = 1
-
-" ale
-let g:ale_linters = {
-      \ 'go': ['gobuild', 'golangci-lint'],
-      \ }
-let g:ale_go_golangci_lint_options = ''
-highlight! ALEError ctermbg=124
-highlight! ALEWarning ctermbg=125
 
 "----------------------------------------------------
 " fzf
@@ -217,5 +181,3 @@ endif
 if filereadable(".project.vimrc")
   source .project.vimrc
 endif
-
-
