@@ -137,33 +137,3 @@ function edit-git-changed-file {
     [ $s2 ] && shift $# && vi $s2
   fi
 }
-function fzf-preview-git-file() {
-  echo 'f() {
-    local args="$(echo $@ | cut -c4-)"
-    if [ "$(git diff --name-only $args)" ]; then
-      git diff --color $args
-    elif [ "$(git diff --cached --name-only $args)" ]; then
-      git diff --color --cached $args
-    elif [ -d $args ]; then
-      ls -la $args
-    else
-      bat --style=numbers --color=always --line-range :500 $args
-    fi
-  }; f {}'
-}
-if type fzf > /dev/null; then
-  export FZF_DEFAULT_OPTS="--exact --layout=reverse --info hidden --ansi --cycle --filepath-word --marker='X' --history-size=5000 --tiebreak=index
-    --bind=tab:down
-    --bind=shift-tab:up
-    --bind=ctrl-a:select-all
-    --bind=ctrl-l:toggle
-    --bind=ctrl-h:toggle
-    --bind=ctrl-w:backward-kill-word
-    --bind=ctrl-u:word-rubout
-    --bind=up:preview-page-up
-    --bind=down:preview-page-down
-    --bind=ctrl-u:half-page-up
-    --bind=ctrl-d:half-page-down"
-  export FZF_DEFAULT_COMMAND="rg --files --hidden -g '!.git' --sort path"
-fi
-alias v='edit-git-changed-file'
