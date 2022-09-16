@@ -17,14 +17,12 @@
 	rba = rebase --abort
 	topic = "!sh -c 'git co -b $1/$2 origin/$1' __dummy__"
 	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
-	push-for-review = "!sh -c 'git push origin HEAD:refs/for/`git current-branch`'"
-	pfr = "!sh -c 'git push-for-review'"
-	dfx = !git diff | gitx
 	tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	pr = pull --rebase
 	current-sha1 = log --pretty=format:%H -n1
   current-svn-rev = ! git svn find-rev `git current-sha1`
   counterpart-branch = ! ( git ls-remote | grep `git current-sha1` | grep heads | cut -d/ -f3 ) 2> /dev/null
+  cof = !git branch -a | fzf | xargs git checkout
 [core]
 	excludesfile = ~/.gitignore
 	autocrlf = input

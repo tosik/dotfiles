@@ -79,6 +79,9 @@ export PATH="$DEVKITARM/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/google-cloud-sdk/bin:$PATH"
 
+# zoxide
+eval "$(zoxide init zsh)"
+
 # pyenv
 if type pyenv >/dev/null 2>&1; then
   export PYENV_ROOT="$HOME/.pyenv"
@@ -129,7 +132,10 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 # golang
 export GO111MODULE=on
 
+
 # fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 function edit-git-changed-file {
   local s1="$(git status -s -u --no-renames | grep -v -E '^D ')"
   if [ $s1 ]; then
@@ -137,3 +143,10 @@ function edit-git-changed-file {
     [ $s2 ] && shift $# && vi $s2
   fi
 }
+
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# bat
+export BAT_THEME="Coldark-Dark"
