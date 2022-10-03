@@ -171,6 +171,7 @@ let g:fzf_layout = {
       \ 'up': '~30%' }
 
 nnoremap <silent> <C-p> :GFiles <C-R>=getcwd()<CR><CR>
+nnoremap <silent> <C-\> :History<CR>
 
 "----------------------------------------------------
 " vim-prettier
