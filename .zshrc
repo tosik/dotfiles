@@ -137,3 +137,9 @@ function edit-git-changed-file {
     [ $s2 ] && shift $# && vi $s2
   fi
 }
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ocha/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ocha/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ocha/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ocha/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
