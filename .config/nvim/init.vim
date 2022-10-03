@@ -17,6 +17,9 @@ call plug#begin('~/.vim/plugged')
   \ 'do': 'yarn install',
   \ }
   Plug 'tpope/vim-projectionist'
+  Plug 'dense-analysis/ale'
+  Plug 'danro/rename.vim'
+  Plug 'OmniSharp/omnisharp-vim'
 
   " colorschemes
   Plug 'altercation/vim-colors-solarized' " solarized
@@ -106,6 +109,12 @@ noremap } :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
 "----------------------------------------------------
 " optional command
 "----------------------------------------------------
+let g:OmniSharp_server_use_mono = 1
+
+
+"----------------------------------------------------
+" optional command
+"----------------------------------------------------
 " highlight
 nnoremap <C-e> :nohlsearch<CR>:set cul cuc<cr>:sleep 50m<cr>:set nocul nocuc<cr>/<BS>
 
@@ -120,9 +129,8 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 
-let g:coc_global_extensions=[ 'coc-omnisharp' ]
+"let g:coc_global_extensions=[ 'coc-omnisharp' ]
 nmap <silent> ,d <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> ,i <Plug>(coc-implementation)
 nmap <silent> ,r <Plug>(coc-references)
 nmap <silent> ,t <Plug>(coc-rename)
@@ -171,6 +179,22 @@ let g:prettier#autoformat = 0
 let g:prettier#quickfix_enabled = 0
 let g:prettier#exec_cmd_async = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql,*.vue,*.html PrettierAsync
+
+"----------------------------------------------------
+" ale
+"----------------------------------------------------
+let g:ale_linters = {
+      \ 'go': ['gobuild', 'golangci-lint'],
+      \ }
+let g:ale_go_golangci_lint_options = ''
+let g:ale_go_golangci_lint_package = 1
+highlight ALEError ctermbg=darkred
+highlight ALEWarning ctermbg=black
+
+"----------------------------------------------------
+" json format
+"----------------------------------------------------
+command! JsonFormat :%!jq .
 
 "----------------------------------------------------
 " load .local.vimrc in current directory
