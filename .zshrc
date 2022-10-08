@@ -78,6 +78,7 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$DEVKITARM/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/google-cloud-sdk/bin:$PATH"
+export PATH="$HOME/bin/nvim-macos/bin:$PATH"
 
 # zoxide
 eval "$(zoxide init zsh)"

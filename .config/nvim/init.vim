@@ -174,6 +174,11 @@ nnoremap <silent> <C-p> :GFiles <C-R>=getcwd()<CR><CR>
 nnoremap <silent> <C-\> :History<CR>
 
 "----------------------------------------------------
+" shortcut keys
+"----------------------------------------------------
+nnoremap ,0 :colorscheme Tomorrow<CR>
+
+"----------------------------------------------------
 " vim-prettier
 "----------------------------------------------------
 let g:prettier#autoformat = 0
@@ -196,6 +201,15 @@ highlight ALEWarning ctermbg=black
 " json format
 "----------------------------------------------------
 command! JsonFormat :%!jq .
+
+
+"----------------------------------------------------
+" completion
+"----------------------------------------------------
+" 補完表示時のEnterで改行をしない
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+set completeopt=menuone
+
 
 "----------------------------------------------------
 " load .local.vimrc in current directory
